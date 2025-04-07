@@ -1,4 +1,4 @@
-# Film Finder
+# Recipedia
 
 
 ## Features
