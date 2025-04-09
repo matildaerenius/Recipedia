@@ -1,8 +1,10 @@
-package com.recipedia.repository;
+package recipedia_backend.repository;
 
-import com.recipedia.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import recipedia_backend.model.User;
+
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByEmail(String email);
+    Optional<User> findByEmail(String email);
 }
