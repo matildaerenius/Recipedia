@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import recipedia_backend.dto.*;
 import recipedia_backend.service.AuthService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
