@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./AuthPage.css";
 
 export default function AuthPage() {
@@ -19,6 +20,8 @@ export default function AuthPage() {
     setRightPanelActive(false);
   };
 
+  const navigate = useNavigate();
+
   // Funktion för att hantera inloggning
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -32,6 +35,7 @@ export default function AuthPage() {
         const data = await response.json();
         localStorage.setItem("jwt", data.token); 
         alert("Inloggning lyckades!");
+        navigate("/");
       } else {
         alert("Inloggning misslyckades!");
       }
