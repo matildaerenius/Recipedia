@@ -1,11 +1,34 @@
-import React from 'react';
+// src/pages/HomePage.js
+import React, { useEffect, useState } from 'react';
 
 const HomePage = () => {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/recipes');
+        if (response.ok) {
+          const data = await response.json();
+          setRecipes(data);
+        } else {
+          console.error('Error fetching recipes');
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
+    };
+    fetchRecipes();
+  }, []);
+
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Välkommen till Recipedia!</h1>
-      <p>Här är dina rekommendationer baserat på dina ingredienser.</p>
-      {}
+    <div>
+      <h1>Recipes</h1>
+      <ul>
+        {recipes.map(recipe => (
+          <li key={recipe.id}>{recipe.title}</li>
+        ))}
+      </ul>
     </div>
   );
 };
